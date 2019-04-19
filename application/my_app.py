@@ -34,18 +34,20 @@ def get_memory_size():
     print('DEBUG:', decoded_output)
     return decoded_output + 'B'
 
-json_output = {
-    "hostname": get_hostname(),
-    "ip_address": get_ip(),
-    "cpus": get_cpu_count(),
-    "memory": get_memory_size()
-}
+def get_json_ouput():
+    json_output = {
+        "hostname": get_hostname(),
+        "ip_address": get_ip(),
+        "cpus": get_cpu_count(),
+        "memory": get_memory_size()
+    }
+    return json_output
 
 app = Flask(__name__)
 
 @app.route('/status')
 def get_status():
-    return jsonify(json_output), 200
+    return jsonify(get_json_output), 200
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port='8080')
