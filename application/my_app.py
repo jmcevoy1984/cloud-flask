@@ -41,6 +41,7 @@ def get_json_output():
     return json_output
 
 app = Flask(__name__)
+app.JSONIFY_PRETTYPRINT_REGULAR=True
 
 @app.route('/status')
 def get_status():
