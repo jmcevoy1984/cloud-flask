@@ -34,7 +34,7 @@ def get_memory_size():
     print('DEBUG:', decoded_output)
     return decoded_output + 'B'
 
-def get_json_ouput():
+def get_json_output():
     json_output = {
         "hostname": get_hostname(),
         "ip_address": get_ip(),
