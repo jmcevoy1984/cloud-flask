@@ -7,10 +7,8 @@ def run_command(command):
     try:
         process.check_returncode()
     except subprocess.CalledProcessError:
-        print('DEBUG:', 'cmd:', process.args, 'result:', process.stderr.decode())
         return 'Error - Command Failed'
     output = process.stdout.decode()
-    print('DEBUG:', 'cmd:', process.args, 'result:', output)
     return output.rstrip()
 
 def get_hostname():
@@ -31,7 +29,6 @@ def get_memory_size():
     awk_process = subprocess.Popen(["awk", "{print $2}"], stdin=grep_process.stdout, stdout=subprocess.PIPE)
     output = awk_process.communicate()[0]
     decoded_output = output.decode().rstrip()
-    print('DEBUG:', decoded_output)
     return decoded_output + 'B'
 
 def get_json_output():
