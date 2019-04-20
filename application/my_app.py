@@ -23,16 +23,13 @@ def get_cpu_count():
     command = ["egrep", "-c", "^processor", "/proc/cpuinfo"]
     return run_command(command)
 
-'''def get_memory_size():
+def get_memory_size():
     free_process = subprocess.Popen(["free", "-h", "-t"], stdout=subprocess.PIPE)
     grep_process = subprocess.Popen(["grep", "Total:"], stdin=free_process.stdout, stdout=subprocess.PIPE)
     awk_process = subprocess.Popen(["awk", "{print $2}"], stdin=grep_process.stdout, stdout=subprocess.PIPE)
     output = awk_process.communicate()[0]
     decoded_output = output.decode().rstrip()
-    return decoded_output + 'B'''
-
-def get_memory_size():
-    return "5gb"
+    return decoded_output + 'B'
 
 def get_json_output():
     json_output = {
